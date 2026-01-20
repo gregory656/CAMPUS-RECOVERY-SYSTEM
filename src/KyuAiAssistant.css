@@ -1,0 +1,111 @@
+/* src/KyuAiAssistant.css */
+.kyu-ai-container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background: linear-gradient(135deg, #f0fff0, #e0f8e0);
+  border-radius: 12px;
+  font-family: Arial, sans-serif;
+  color: #0b6623;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.kyu-ai-container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  animation: glow 2s infinite alternate;
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #0b6623; }
+  50% { text-shadow: 0 0 20px #0b6623, 0 0 40px #a8edea; }
+  100% { text-shadow: 0 0 5px #0b6623; }
+}
+
+.topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.topics button {
+  background: #0b6623;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.topics button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 102, 35, 0.3);
+}
+
+.chat-box {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #0b6623;
+  border-radius: 8px;
+  padding: 10px;
+  background: #f9fff9;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.chat-message {
+  padding: 8px 12px;
+  border-radius: 8px;
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+.chat-message.user {
+  align-self: flex-end;
+  background: #0b6623;
+  color: white;
+}
+
+.chat-message.assistant {
+  align-self: flex-start;
+  background: #a8edea;
+  color: #0b6623;
+}
+
+.chat-input {
+  display: flex;
+  gap: 8px;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #0b6623;
+}
+
+.chat-input button {
+  background: #0b6623;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+}
+
+.chat-input button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .kyu-ai-container { padding: 15px; }
+  .chat-box { max-height: 200px; }
+  .topics button { padding: 6px 10px; font-size: 0.85rem; }
+}

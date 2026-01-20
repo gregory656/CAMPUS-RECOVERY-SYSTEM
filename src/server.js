@@ -1,0 +1,40 @@
+// server.js
+/* global process */
+import express from "express";
+import cors from "cors";
+import fetch from "node-fetch";
+
+const app = express();
+app.use(cors());
+app.use(express.json());
+
+const PORT = 5000;
+const OPENAI_KEY = process.env.OPENAI_API_KEY; // store key safely
+
+app.post("/api/ai", async (req, res) => {
+  try {
+    const { prompt } = req.body;
+
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${OPENAI_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        model: "gpt-4",
+        messages: [{ role: "user", content: prompt }],
+        temperature: 0.7,
+        max_tokens: 500,
+      }),
+    });
+
+    const data = await response.json();
+    res.json({ message: data.choices[0].message.content });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Failed to get AI response" });
+  }
+});
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

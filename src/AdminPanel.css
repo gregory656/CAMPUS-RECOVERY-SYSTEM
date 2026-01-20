@@ -1,0 +1,223 @@
+/* src/AdminPanel.css */
+
+/* === General panel layout === */
+.admin-panel {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5f7fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.admin-panel h2 {
+  margin-bottom: 8px;
+  color: #0b6623;
+}
+
+/* === Admin Login Form === */
+.admin-login {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 20px;
+  background: #f0f3f7;
+  border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.admin-login input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow-x: auto;               /*  allows long password input to scroll */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Remove mobile text cutoff issue */
+input[type="password"],
+input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  white-space: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-login button {
+  padding: 10px 20px;
+  background: #0b6623;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.admin-login button:hover {
+  background: #095018;
+}
+
+/* === Metrics === */
+.metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin: 15px 0;
+}
+
+.metric {
+  background: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  text-align: center;
+  flex: 1 1 150px;
+}
+
+/* === Search Bar === */
+.search-bar {
+  margin: 15px 0;
+  display: flex;
+  height: auto;
+  justify-self: auto;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.search-bar input {
+  flex: 1 1 200px;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  justify-self: auto;
+}
+
+.search-bar button {
+  padding: 10px 16px;
+  background: #0b6623;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.search-bar button:hover {
+  background: #095018;
+}
+
+/* === Items List === */
+.items-list {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: 10px;
+  padding-right: 5px;
+}
+
+.items-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.items-list::-webkit-scrollbar-thumb {
+  background-color: #0b6623;
+  border-radius: 4px;
+}
+
+/* === Item Card === */
+.admin-item {
+  background: white;
+  border-radius: 10px;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-left: 5px solid #0b6623;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.admin-item h4 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+}
+
+.admin-item p,
+.admin-item small {
+  margin: 4px 0;
+  color: #555;
+}
+
+/* === Status Badges === */
+.status-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: bold;
+  color: white;
+}
+
+.badge.verified { background-color: #0b6623; }
+.badge.retrieved { background-color: #1976d2; }
+.badge.pending { background-color: #999; }
+
+/* === Action Buttons === */
+.actions {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+
+.actions button {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.actions button:hover {
+  opacity: 0.85;
+}
+
+.actions button:nth-child(1) { background: #0b6623; color: white; }
+.actions button:nth-child(2) { background: #1976d2; color: white; }
+.actions button:nth-child(3) { background: #d32f2f; color: white; }
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+  .admin-panel { padding: 15px; margin: 10px; }
+  .items-list { max-height: 300px; }
+  .admin-item { flex-direction: column; font-size: 14px; }
+  .admin-item h4 { font-size: 14px; }
+  .actions { flex-direction: column; }
+  .actions button { width: 100%; margin-bottom: 4px; padding: 5px 8px; font-size: 12px; }
+  .status-badges .badge { font-size: 10px; padding: 3px 8px; margin-bottom: 4px; }
+  .search-bar input { padding: 8px; font-size: 14px; }
+  .search-bar button { padding: 8px 12px; font-size: 14px; }
+}
+
+@media (max-width: 480px) {
+  .admin-panel { padding: 10px; }
+  .admin-login input { width: 90%; padding: 8px; }
+  .admin-login button { padding: 8px 16px; font-size: 14px; }
+  .admin-item h4 { font-size: 13px; }
+  .admin-item p, .admin-item small { font-size: 12px; }
+  .actions button { font-size: 11px; padding: 4px 6px; }
+  .status-badges .badge { font-size: 9px; padding: 2px 5px; }
+}
